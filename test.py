@@ -4,7 +4,10 @@ import os
 import subprocess
 from subprocess import PIPE
 import json
-
+import readline
+for i in range(readline.get_current_history_length()):
+    print (readline.get_history_item(i + 1))
+    
 W='\033[0m'     
 R='\033[1;31m'    
 G='\033[0;32m'    
