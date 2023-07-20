@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import os 
+import os
 import subprocess
 from subprocess import PIPE
 import json
 
 W='\033[0m'     
-R='\033[31m'    
+R='\033[1;31m'    
 G='\033[0;32m'    
-B='\033[34m'   
+B='\033[1;34m' 
 P='\033[35m'   
 Y='\033[1;33m' 
 
@@ -73,17 +73,36 @@ class Chat_GPT:
                     return str(response_text["choices"][0]["text"]).replace('\n','')
             else:    
                 return str(response_text["choices"][0]["text"]).replace('\n','')
-       
+        list1 = []
         while True  :
             reply = requests_Qury() 
             with open("./answer.txt",'w')as answer :
-                    Handdel = answer.write(reply.replace(".",'\n'))                
+                if "." in reply[1] : 
+                    reply = reply.split(".")
+                    conut = 1
+                    conut_ = 1
+                    for line in reply :
+                        try : 
+                           replace = line+'.'+reply[conut_]
+                           conut +=1
+                           conut_ +=1
+                           if '.' in replace[1] or '.' in replace[2]:
+                               list1.append(replace.strip())
+                        except IndexError:
+                            break
+                    write = "\n".join(list1)        
+                    Handdel = answer.write(write)
+                    list1= []
+                elif '.' in reply and ',' in reply :
+                   Handdel = answer.write(reply.replace('.','\n').replace(',','\n',2))                           
+                else:
+                    Handdel = answer.write(reply.replace('.','\n')) 
             with open("./answer.txt",'r') as read_answer:
                 ReadData = read_answer.read().split('\n')
                 print(Y+"ChatGPT  ---|  "+B+ReadData[0]+W,end='')    
                 print()
-                for line in ReadData :
-                    print(B+"             "+line.replace('\n',''))
+                for line in ReadData[1:]:
+                    print("               "+B+B+line)
              
 if __name__=='__main__':
     #_Conections()
