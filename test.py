@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import os
+import sys ,time
 import subprocess
 from subprocess import PIPE
 import json
@@ -44,9 +45,11 @@ class Chat_GPT:
             json_File = json.load(json_File)
             json_File = json_File["OPENAI_API_KEY"]
             openai_api_key = json_File    
-            Bearer = "Bearer "+f"{openai_api_key}"   
+            Bearer = "Bearer "+f"{openai_api_key}"  
+            Back_end_api= "https://api.openai.com/v1/completions"
+            Connect_Session = requests.Session() 
         def requests_Qury():
-            prompt = input(R+"USER     ---|  "+W).strip()
+            prompt = input(R+"👨 USER     ---|  "+W).strip()
             if prompt == "EXIT".lower() or prompt=="exit".upper():
                 print('[*] session is closed')
                 exit()
@@ -56,8 +59,8 @@ class Chat_GPT:
                 prompt_tittel =f'{prompt}'+" . Provide only code, no text",  
             else:
                 prompt_tittel = prompt            
-            response = requests.post(
-                "https://api.openai.com/v1/completions",
+            response = Connect_Session.post(
+                        Back_end_api,
                 headers={
                     "Content-Type": "application/json",
                      "Authorization": f"{Bearer}",
@@ -86,27 +89,42 @@ class Chat_GPT:
                     conut_ = 1
                     for line in reply :
                         try : 
-                           replace = line+'.'+reply[conut_]
+                           replace = ''+line+'.'+reply[conut_]
                            conut +=1
                            conut_ +=1
                            if '.' in replace[1] or '.' in replace[2]:
-                               list1.append(replace.strip())
+                               list1.append(replace)                               
                         except IndexError:
-                            break
+                            break       
                     write = "\n".join(list1)        
-                    Handdel = answer.write(write)
+                    Handdel = answer.write(write.strip())
                     list1= []
                 elif '.' in reply and ',' in reply :
                    Handdel = answer.write(reply.replace('.','\n').replace(',','\n',2))                           
                 else:
                     Handdel = answer.write(reply.replace('.','\n')) 
             with open("./answer.txt",'r') as read_answer:
-                ReadData = read_answer.read().split('\n')
-                print(Y+"ChatGPT  ---|  "+B+ReadData[0]+W,end='')    
-                print()
-                for line in ReadData[1:]:
-                    print("               "+B+B+line)
-             
+                ReadData = read_answer.readlines()
+                try:
+                    if write:
+                        print(Y+"🦾 ChatGPT  ---| "+W+B,end='')
+                    else:
+                        print(Y+"🦾 ChatGPT  ---|  "+W+B,end='')
+                except UnboundLocalError:  
+                        print(Y+"🦾 ChatGPT  ---|  "+W+B,end='')            
+                for i in  ReadData[0]:
+                    sys.stdout.write(i)
+                    sys.stdout.flush()
+                    time.sleep(3./90)  
+                print("              ",end='')    
+                ReadData = str("".join(ReadData[1:]))#  
+                for i in ReadData : 
+                     sys.stdout.write(i)
+                     sys.stdout.flush()
+                     time.sleep(3./90) 
+                     if '\n' in i :
+                        print("              ",end='')
+                print("\n",end='')
 if __name__=='__main__':
     #_Conections()
     #__Check_Import()
