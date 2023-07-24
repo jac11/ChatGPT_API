@@ -53,14 +53,11 @@ class Chat_GPT:
         def requests_Qury():
             prompt = input(R+"👨 USER     ---|  "+W).strip()
             with open("./Check_SPelling.txt" ,'w')as Checker   :
-                Checker.write(prompt)
-            Check_SPelling = "cat  Check_SPelling.txt | aspell --list  >  .file"
-            SystemCall = subprocess.call(Check_SPelling,shell=True,stderr=subprocess.PIPE) 
-            with open ('.file' ,'r') as file :
-                file = file.read()
-            if len(file) == 0 :
-               pass
-            else:       
+                Checker.write(prompt) 
+            SystemCall = subprocess.getstatusoutput('cat  Check_SPelling.txt | aspell --list')[1]
+            if len(SystemCall) == 0 :
+                pass
+            else:  
                 order2 = "aspell -c Check_SPelling.txt"
                 command_proc3 = ' gnome-terminal --geometry 60x15+1000+60  -e ' +'"' + order2 +'"'  
                 call_termminal = subprocess.call(command_proc3,shell=True,stderr=subprocess.PIPE)  
