@@ -56,22 +56,29 @@ class Chat_GPT:
                 Checker.write(prompt) 
             SystemCall = subprocess.getstatusoutput('cat  Check_SPelling.txt | aspell --list')[1]
             if len(SystemCall) == 0 :
-                pass
+               pass
             else:  
                 order2 = "aspell -c Check_SPelling.txt"
                 command_proc3 = ' gnome-terminal --geometry 60x15+1000+60  -e ' +'"' + order2 +'"'  
-                call_termminal = subprocess.call(command_proc3,shell=True,stderr=subprocess.PIPE)  
-                time.sleep(4)
+                call_termminal = subprocess.call(command_proc3,shell=True,stderr=subprocess.PIPE) 
+                while True:
+                    Process = subprocess.getstatusoutput("ps ax | grep aspell | grep -v grep")[1]
+                    if len(Process) != 0: 
+                        sys.stdout.write('\x1b[1A')  
+                        sys.stdout.write('\x1b[2K')
+                        print(R+"👨 USER     ---|  "+W+str(prompt))
+                    else:                
+                        break   
                 with open("./Check_SPelling.txt" ,'r') as Checker :
                     prompt = Checker.read().strip()  
                     sys.stdout.write('\x1b[1A')  
                     sys.stdout.write('\x1b[2K')
-                    print(R+"👨 USER     ---|  "+W+str(prompt)) 
+                    print(R+"👨 USER     ---|  "+W+str(prompt))                                  
             if prompt == "EXIT".lower() or prompt=="exit".upper():
                 print('[*] session is closed')
                 exit()
             else:
-                pass  
+                pass      
             if "code" in prompt:    
                 prompt_tittel =f'{prompt}'+" . Provide only code, no text",  
             else:
