@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import os
+import re
 import sys ,time
 import subprocess
 from subprocess import PIPE
@@ -100,50 +101,29 @@ class Chat_GPT:
             if "code" in prompt:                
                 with open ("code",'w') as f :
                     code =  f.write(str(response_text["choices"][0]["text"]))
-                    return str(response_text["choices"][0]["text"]).replace('\n','')
+                    search = str(response_text["choices"][0]["text"])
+                    return re.split("\\n\\n" ,search)
             else:    
-                return str(response_text["choices"][0]["text"]).replace('\n','')
-            
-               
+                search = str(response_text["choices"][0]["text"])
+                return re.split("\\n\\n" ,search)
         list1 = []
         while True  :
-            reply = requests_Qury() 
+            reply = requests_Qury()
             with open("./answer.txt",'w')as answer :
-                if "." in reply[1] : 
-                    reply = reply.split(".")
-                    conut = 1
-                    conut_ = 1
-                    for line in reply :
-                        try : 
-                           replace = ''+line+'.'+reply[conut_]
-                           conut +=1
-                           conut_ +=1
-                           if '.' in replace[1] or '.' in replace[2]:
-                               list1.append(replace)                               
-                        except IndexError:
-                            break       
-                    write = "\n".join(list1)        
-                    Handdel = answer.write(write.strip())
-                    list1= []
-                elif '.' in reply and ',' in reply :
-                   Handdel = answer.write(reply.replace('.','\n').replace(',','\n',2))                           
-                else:
-                    Handdel = answer.write(reply.replace('.','\n')) 
+                for i in reply:
+                    try:
+                       answer.write(i+'\n')
+                    except :
+                        pass       
             with open("./answer.txt",'r') as read_answer:
                 ReadData = read_answer.readlines()
-                try:
-                    if write:
-                        print(Y+"🦾 ChatGPT  ---| "+W+B,end='')
-                    else:
-                        print(Y+"🦾 ChatGPT  ---|  "+W+B,end='')
-                except UnboundLocalError:  
-                        print(Y+"🦾 ChatGPT  ---|  "+W+B,end='')            
-                for i in  ReadData[0]:
+                print(Y+"🦾 ChatGPT  ---|  "+W+B,end='')           
+                for i in  ReadData[1]:
                     sys.stdout.write(i)
                     sys.stdout.flush()
                     time.sleep(3./90)  
                 print("                 ",end='')    
-                ReadData = str("".join(ReadData[1:]))#  
+                ReadData = str("".join(ReadData[2:]))#  
                 for i in ReadData : 
                      sys.stdout.write(i)
                      sys.stdout.flush()
@@ -151,7 +131,7 @@ class Chat_GPT:
                      if '\n' in i :
                         print("                 ",end='')
                 print("\n",end='')
-        
+            
 if __name__=='__main__':
     #_Conections()
     #__Check_Import()
