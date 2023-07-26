@@ -122,8 +122,7 @@ class Chat_GPT:
                 for i in  ReadData[1]: 
                     if C == 100:
                         print("\n"+"                  "+"-",end='') 
-                        if C == 100:
-                            C = 0
+                        C = 0
                     sys.stdout.write(i)
                     sys.stdout.flush()
                     time.sleep(3./90)  
@@ -135,8 +134,7 @@ class Chat_GPT:
                 for i in ReadData : 
                     if C == 100:
                         print("\n"+"                  "+"-",end='') 
-                        if C == 100:
-                            C = 0
+                        C = 0
                     sys.stdout.write(i)
                     sys.stdout.flush()
                     time.sleep(3./90) 
