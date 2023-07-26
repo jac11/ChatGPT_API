@@ -100,13 +100,11 @@ class Chat_GPT:
             response_text = json.loads(response.text)
             if "code" in prompt:                
                 with open ("code",'w') as f :
-                    code =  f.write(str(response_text["choices"][0]["text"]))
                     search = str(response_text["choices"][0]["text"])
-                    return re.split("\\n\\n" ,search)
+                    return re.split("\\n\\n" ,search[2:])
             else:    
-                search = str(response_text["choices"][0]["text"])
-                return re.split("\\n\\n" ,search)
-        list1 = []
+                search = str(response_text["choices"][0]["text"])          
+                return  re.split("\\n\\n" ,search[2:])
         while True  :
             reply = requests_Qury()
             with open("./answer.txt",'w')as answer :
@@ -119,7 +117,7 @@ class Chat_GPT:
                 ReadData = read_answer.readlines()
                 print(Y+"🦾 ChatGPT  ---|  "+W+B,end='')  
                 C = 0
-                for i in  ReadData[1]: 
+                for i in  ReadData[0]: 
                     if C == 100:
                         print("\n"+"\t\t  "+"-",end='') 
                         C = 0
@@ -129,7 +127,7 @@ class Chat_GPT:
                     C +=1 
                 print("\t\t  ",end='')  
                  
-                ReadData = str("".join(ReadData[2:])) 
+                ReadData = str("".join(ReadData[1:])) 
                 C = 0
                 for i in ReadData : 
                     if C == 100:
