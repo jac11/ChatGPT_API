@@ -121,25 +121,25 @@ class Chat_GPT:
                 C = 0
                 for i in  ReadData[1]: 
                     if C == 100:
-                        print("\n"+"                  "+"-",end='') 
+                        print("\n"+"\t\t  "+"-",end='') 
                         C = 0
                     sys.stdout.write(i)
                     sys.stdout.flush()
                     time.sleep(3./90)  
                     C +=1 
-                print("                  ",end='')  
+                print("\t\t  ",end='')  
                  
                 ReadData = str("".join(ReadData[2:])) 
                 C = 0
                 for i in ReadData : 
                     if C == 100:
-                        print("\n"+"                  "+"-",end='') 
+                        print("\n"+"\t\t  "+"-",end='') 
                         C = 0
                     sys.stdout.write(i)
                     sys.stdout.flush()
                     time.sleep(3./90) 
                     if '\n' in i :
-                      print("                  ",end='')
+                      print("\t\t  ",end='')
                 print("\n",end='')
             
 if __name__=='__main__':
