@@ -117,19 +117,31 @@ class Chat_GPT:
                         pass       
             with open("./answer.txt",'r') as read_answer:
                 ReadData = read_answer.readlines()
-                print(Y+"🦾 ChatGPT  ---|  "+W+B,end='')           
-                for i in  ReadData[1]:
+                print(Y+"🦾 ChatGPT  ---|  "+W+B,end='')  
+                C = 0
+                for i in  ReadData[1]: 
+                    if C == 100:
+                        print("\n"+"                  "+"-",end='') 
+                        if C == 100:
+                            C = 0
                     sys.stdout.write(i)
                     sys.stdout.flush()
                     time.sleep(3./90)  
-                print("                 ",end='')    
-                ReadData = str("".join(ReadData[2:]))#  
+                    C +=1 
+                print("                  ",end='')  
+                 
+                ReadData = str("".join(ReadData[2:])) 
+                C = 0
                 for i in ReadData : 
-                     sys.stdout.write(i)
-                     sys.stdout.flush()
-                     time.sleep(3./90) 
-                     if '\n' in i :
-                        print("                 ",end='')
+                    if C == 100:
+                        print("\n"+"                  "+"-",end='') 
+                        if C == 100:
+                            C = 0
+                    sys.stdout.write(i)
+                    sys.stdout.flush()
+                    time.sleep(3./90) 
+                    if '\n' in i :
+                      print("                  ",end='')
                 print("\n",end='')
             
 if __name__=='__main__':
