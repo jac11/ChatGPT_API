@@ -21,7 +21,7 @@ class Writer:
                               'java': '.java',
                               'javascript': '.js',
                               'objective-c': '.m',
-                              'php': '.php',s
+                              'php': '.php',
                               'perl': '.pl',
                               'python': '.py',
                               'ruby': '.rb',
