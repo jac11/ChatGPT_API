@@ -101,7 +101,6 @@ class Chat_GPT:
             ) 
             response_text = json.loads(response.text)
             if "code" in prompt : 
-                print(prompt)
                 search = str(response_text["choices"][0]["text"])                     
                 codeback = "\n".join(re.split("\\n\\n" ,search[2:]))                
                 with open('Chat_Package/.Code_re.txt','w') as code_write:
