@@ -57,26 +57,25 @@ def Banner_Logo():
 def Banner2_logo():
       Banner2 = """    
  
-                        'o0NMMMMN0o,
-                     :XM;        ,MNoodol;.
-                    OMo        :xNM,     ,MNd.
-                .cxKM0     'o0Md            xMk
-              cXMl WMc   dWM.      .cc.      cMK
-             KM;   NMc   NK     ;d0  ;MXx;    MM.
-            XM:    NMc   N0 .cOMMx       NM0l,MM.                                                                                     
-           .MM     NMc   NW0      dk:.      'MMM.       
-            MM.    NMc   NK        oM.0d,     .MN.      # OpenAI ChatGPt-3.5
-            cMX     .No' N0        cM   ;WO    .MW       
-             .MNc       lMN.      .0M   .MM     MM;
-              WMMW0l.       Ox;,oK xM   .MM     MM.
-              MM.  ;MNx:   .oWx    cM   .MM    OMx
-              WM:      OMKK       .KM   .MM  ;KM,
-               MW;             ;xNMc    ,MM0WM.
-                dMO;       .lOW0        XM;
-                   0MX0OOKWMx         ;NM.
-                           WWOl,'.,:xNM,
-                                xO.     
-      """
-      print(B+Banner2+W)
+                 'lOKXXX0kc.                   
+              'KM        xMOdxxo:'            
+             xMo      ;oKM,      XNd          
+         'o0NMW   .cOWd            KW'        
+       'KN  :MX   M,     'l0Xkc.    NM        
+      'MO   ;MN   M. .lOW.     NNkc.KM.                       
+      KM.   ;MN   MKd    ,kc.     .MMM             ...                                                                 
+      kM,   ;MN   M'       Moko'     MK         'd0NWMWN0d,               """+Y+"Chatgpt-3.5\t\t\t"+W+B+"""lNNNK.     ;NNd            
+       MN.    :OccM.       M,  dWd   .MX      .OMWx:'.,c0MMk.                                          ;MMdMMx     ;MMx
+        0Wd'      NO'    .oM,  oMK    MM      0MM;       oMMO  cXOo0NNXk,    :kXNNXk;   OXdxKNNKd.    .WMx oMMc    ;MMx
+        WM.NXk:.   ,.dkxx  M,  oMK   .MK     .MMW        .MMW  oMMd,';kMMc .0MX,..lMMc  XMMc,,cWMX   .KMK.  0MM,   ;MMx 
+        MM    .MKo:k0      M,  oMK  ,WN       XMM;       :MMO  oMM,    WM0 ,MMN0000NNx  XMM    KMM.  xMMWNNNNMMN.  ;MMx                                   
+        .MO            .:xXx   xMWdKX         'XMWd;...,xMMk.  oMMo...oMMc .NMN;.   .   XMM    KMM. cMMo;;;;;oMMk  ;MMx                                   
+          WXc.      ;xXM.      WM.              :kXMMMMWKx,    oMMXWMMW0:   .oKWWNXNX.  XMM    KMM.;MMO       kMMc ;MMx
+            ,MN0OOXMW        :NW                   .....       oMM,....        .....    ...    ... ...         ...  ...
+                    WXxl::lkNX                                 oMM,                                                   
+                                                               .''.       """+Y+"""Terminal and web interface
+                                                                             By-jacstory"""
+                                                               
+      print(B+Banner2+W)  
                                                                                                                                                                                  
-                                 
+                 
