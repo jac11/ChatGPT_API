@@ -43,27 +43,7 @@ def Banner_Logo():
                               WWWWWWWWWWWWWWWWWWWWWW.             
                                   dWWWWWWWWWWWWx                  
                                        ;XX:\n\n""" 
-      Banner2 = """       
-                        'o0NMMMMN0o,
-                     :XM;        ,MNoodol;.
-                    OMo        :xNM,     ,MNd.
-                .cxKM0     'o0Md            xMk
-              cXMl WMc   dWM.      .cc.      cMK
-             KM;   NMc   NK     ;d0  ;MXx;    MM.
-            XM:    NMc   N0 .cOMMx       NM0l,MM.
-           .MM     NMc   NW0      dk:.      'MMM.
-            MM.    NMc   NK        oM.0d,     .MN.
-            cMX     .No' N0        cM   ;WO    .MW
-             .MNc       lMN.      .0M   .MM     MM;
-              WMMW0l.       Ox;,oK xM   .MM     MM.
-              MM.  ;MNx:   .oWx    cM   .MM    OMx
-              WM:      OMKK       .KM   .MM  ;KM,
-               MW;             ;xNMc    ,MM0WM.
-                dMO;       .lOW0        XM;
-                   0MX0OOKWMx         ;NM.
-                           WWOl,'.,:xNM,
-                                xO.
-      """
+    
       TEXT  = Y+"\t\t\t\t--Welcome To ChatGPT--\n"
       TEXT += "\t\t\t  --Base OF Model GPT-3.5 OpenAI--\n"
       TEXT +="\t\t\t --ChatGPT-Helpper done by jacsroty--\n\n"+W
@@ -74,4 +54,29 @@ def Banner_Logo():
           sys.stdout.write(text)
           sys.stdout.flush()
           time.sleep(4./90) 
-    
+def Banner2_logo():
+      Banner2 = """    
+ 
+                        'o0NMMMMN0o,
+                     :XM;        ,MNoodol;.
+                    OMo        :xNM,     ,MNd.
+                .cxKM0     'o0Md            xMk
+              cXMl WMc   dWM.      .cc.      cMK
+             KM;   NMc   NK     ;d0  ;MXx;    MM.
+            XM:    NMc   N0 .cOMMx       NM0l,MM.                                                                                     
+           .MM     NMc   NW0      dk:.      'MMM.       
+            MM.    NMc   NK        oM.0d,     .MN.      # OpenAI ChatGPt-3.5
+            cMX     .No' N0        cM   ;WO    .MW       
+             .MNc       lMN.      .0M   .MM     MM;
+              WMMW0l.       Ox;,oK xM   .MM     MM.
+              MM.  ;MNx:   .oWx    cM   .MM    OMx
+              WM:      OMKK       .KM   .MM  ;KM,
+               MW;             ;xNMc    ,MM0WM.
+                dMO;       .lOW0        XM;
+                   0MX0OOKWMx         ;NM.
+                           WWOl,'.,:xNM,
+                                xO.     
+      """
+      print(B+Banner2+W)
+                                                                                                                                                                                 
+                                 

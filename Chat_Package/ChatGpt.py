@@ -20,28 +20,29 @@ B='\033[1;34m'
 P='\033[35m'   
 Y='\033[1;33m' 
 
-def _Conections():
-    Check_Internet ='ping  -w1 www.google.com  >/dev/null 2>&1 '   
-    communicate = os.system(Check_Internet)
-    if communicate  == 0 :
-        pass
-    else:
-        if communicate == 512:
-            print("[+] No Internet Connection")
-            exit()  
-def __Check_Import ():  
-    Check_Import ="pip show requests"
-    Check_Import = subprocess.call(Check_Import,shell=True,stderr=subprocess.PIPE,stdout=PIPE) 
-    if Check_Import == 0:
-        pass
-    else:
-        os.system("pip3 install --upgrade requests >/dev/null 2>&1")
-        Process = "pip install  requests"  
-        subprocess.call(Process,shell=True,stderr=subprocess.PIPE,stdout=PIPE)   
+
                 
 class Chat_GPT:
     def __init__(self):
         self.__Connect_Openai()
+    def _Conections(self):
+        Check_Internet ='ping  -w1 www.google.com  >/dev/null 2>&1 '   
+        communicate = os.system(Check_Internet)
+        if communicate  == 0 :
+            pass
+        else:
+            if communicate == 512:
+                print("[+] No Internet Connection")
+                exit()  
+    def _Check_Import (self):  
+        Check_Import ="pip show requests"
+        Check_Import = subprocess.call(Check_Import,shell=True,stderr=subprocess.PIPE,stdout=PIPE) 
+        if Check_Import == 0:
+            pass
+        else:
+            os.system("pip3 install --upgrade requests >/dev/null 2>&1")
+            Process = "pip install  requests"  
+            subprocess.call(Process,shell=True,stderr=subprocess.PIPE,stdout=PIPE)       
     def __Connect_Openai(self):   
         import requests 
         import json
@@ -147,6 +148,4 @@ class Chat_GPT:
                       print("\t\t  ",end='')
                 print("\n",end='') 
 if __name__=='__main__':
-    _Conections()
-    __Check_Import()
     Chat_GPT()             

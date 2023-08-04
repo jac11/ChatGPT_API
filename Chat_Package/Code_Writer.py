@@ -110,13 +110,13 @@ class Writer:
             for language,extension in Language_dic.items():  
                for lang in order :
                   if len(lang) == len(language): 
-                     if language in order  and len(language) :
+                     if language in order  :
                         Count = [i for i in range(1,10001)]
                         Count  = random.choice(Count)
                         for lanC , commant in commants.items():
                            if language == lanC  :                        
                               with open(path+language+'_'+str(Count)+extension,'w') as Code_file:
-                                 Coderequests = Code_file.write(str(commant)+"".join(order)+'\n'+code) 
+                                 Coderequests = Code_file.write(str(commant)+" ".join(order)+'\n'+code) 
 
 if __name__=='__main__':
     Writer()
