@@ -35,10 +35,8 @@ class Control:
             sys.stdout.write(word)
             sys.stdout.flush()
             time.sleep(4./90)  
-
-        print(Y+"🌏 add the API KEY : ",end=''+W)
         try:
-            Input_Key = str(input("")).strip()
+            Input_Key = str(input(Y+"🌏 add the API KEY : "+W)).strip()
         except :
             pass   
         with open('./Chat_Package/.KEY_AI.json','w') as APIKEY:
