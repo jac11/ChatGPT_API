@@ -27,6 +27,7 @@ class Control:
                             Once you've created an account, you'll be able to generate an API key which you can then add to the ChatGPT tool.
                             To do this, go to the Settings page, click the 'API Keys' tab, and click the 'Generate API Key' button.
                             Copy the generated API key and paste it into the ChatGPT tool."""+W
+        Info += Y+"""\n\t\t\t\t\t\t\t\t\thttps://www.openai.com"""+W                    
         Info += R+"""\n\n\t\t\t\t\t\t***************************************************************\n"""+W
 
 
