@@ -36,7 +36,7 @@ class Control:
             sys.stdout.flush()
             time.sleep(4./90)  
         try:
-            Input_Key = str(input(Y+"🌏 add the API KEY : "+W)).strip()
+            Input_Key = str(input(Y+"🌏 add the API KEY   : "+W)).strip()
         except :
             pass   
         with open('./Chat_Package/.KEY_AI.json','w') as APIKEY:
@@ -66,7 +66,7 @@ class Control:
                time.sleep(3)
                self.Control_all()
             else:
-                print(R+"⛔ Error API       :",APIKEY+'\n'+"⛔ Not Correct API  "+W)
+                print(R+"⛔ Error API         :",APIKEY+'\n'+"⛔ API repones code  : "+str(response.status_code)+W)
                 if os.path.exists('./Chat_Package/.KEY_AI.json'):
                    os.remove('./Chat_Package/.KEY_AI.json')
                 exit()    
