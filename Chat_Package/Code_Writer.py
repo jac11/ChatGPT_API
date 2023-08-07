@@ -58,6 +58,7 @@ class Writer:
                        }          
             commants =  {
                               'python': '#',
+                              'html':' <!-- ',
                               'java': '//',
                               'c++': '//',
                               'c': '//',   
@@ -100,7 +101,7 @@ class Writer:
                               'xslt': '<!--',
                               'lisp': ';',
                               'dart': '//',
-                              'css': '/* */',
+                              'css': '/* ',
                               'powershell': '#'
             }
             if os.path.exists('./Code_request/') : 
@@ -114,9 +115,16 @@ class Writer:
                         Count = [i for i in range(1,10001)]
                         Count  = random.choice(Count)
                         for lanC , commant in commants.items():
-                           if language == lanC  :                        
+                            if language == lanC and('htlm' or 'css') not in lanC: 
                               with open(path+language+'_'+str(Count)+extension,'w') as Code_file:
                                  Coderequests = Code_file.write(str(commant)+" ".join(order)+'\n'+code) 
-
+                            else:
+                                if language == lanC and 'css'in lanC:
+                                   with open(path+language+'_'+str(Count)+extension,'w') as Code_file:
+                                        Coderequests = Code_file.write(str(commant)+' */'+" ".join(order)+' */'+'\n'+code) 
+                                else: 
+                                     if language == lanC and 'html'in lanC:
+                                        with open(path+language+'_'+str(Count)+extension,'w') as Code_file:
+                                            Coderequests = Code_file.write(str(commant)+" -->"+" ".join(order)+' -->'+'\n'+code)         
 if __name__=='__main__':
     Writer()
