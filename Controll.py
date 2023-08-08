@@ -30,19 +30,18 @@ class Control:
         Info += Y+"""\n\t\t\t\t\t\t\t\t\thttps://www.openai.com"""+W                    
         Info += R+"""\n\n\t\t\t\t\t\t***************************************************************\n"""+W
 
-
         for word in Info:          
             sys.stdout.write(word)
             sys.stdout.flush()
-            time.sleep(4./90)  
+            time.sleep(4./90)       
         try:
-            Input_Key = str(input(Y+"🌏 add the API KEY   : "+W)).strip()
+            Input_Key = str(input(Y+"🌏 add the API KEY   : "+W)).strip()#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
         except :
             pass   
         with open('./Chat_Package/.KEY_AI.json','w') as APIKEY:
             APIKEY = APIKEY.write("{"+'\n'\
                 +'  "OPENAI_API_KEY" '+' : '+'"'+Input_Key+'"'+'\n'\
-                +'}')  
+                +"}")  
         def Test_API():
             with open('./Chat_Package/.KEY_AI.json','r') as APIKEY:
                  APIKEY = APIKEY.read().split(':')[1][2:-3]
@@ -66,12 +65,16 @@ class Control:
                time.sleep(3)
                self.Control_all()
             else:
-                print(R+"⛔ Error API         :",APIKEY+'\n'+"⛔ API repones code  : "+str(response.status_code)+W)
-                if os.path.exists('./Chat_Package/.KEY_AI.json'):
-                   os.remove('./Chat_Package/.KEY_AI.json')
-                exit()    
-        Test_API()
-                         
+                from Chat_Package.Error_HTTP import Error_HTTP
+                run = Error_HTTP(self)
+                for Code,Error in self.HTTP_Error_Codes.items():
+                    if str(response.status_code) == Code :
+                        print(R+"⛔ Error API         :",APIKEY+'\n'+"⛔ API repones code  : "+Code+"-"+Error+W)                      
+                        if os.path.exists('./Chat_Package/.KEY_AI.json'):
+                           os.remove('./Chat_Package/.KEY_AI.json')
+                           break
+                        exit()    
+        Test_API()                       
     def Control_all(self):
         run = Banner_Logo()
         run = Chat_GPT()
