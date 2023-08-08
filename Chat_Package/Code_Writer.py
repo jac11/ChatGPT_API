@@ -116,7 +116,12 @@ class Writer:
                         for lanC , commant in commants.items():
                            if language == lanC  :                        
                               with open(path+language+'_'+str(Count)+extension,'w') as Code_file:
-                                 Coderequests = Code_file.write(str(commant)+"".join(order)+'\n'+code) 
-
+                                 Coderequests = Code_file.write(str(commant)+" "+" ".join(order)+'\n'+code) 
+                                 break
+                        break
+                                
 if __name__=='__main__':
     Writer()
+
+
+

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+# sudo apt-get install dbus-x11
 import os
 import re
 import sys ,time
@@ -42,7 +43,17 @@ class Chat_GPT:
         else:
             os.system("pip3 install --upgrade requests >/dev/null 2>&1")
             Process = "pip install  requests"  
-            subprocess.call(Process,shell=True,stderr=subprocess.PIPE,stdout=PIPE)       
+            subprocess.call(Process,shell=True,stderr=subprocess.PIPE,stdout=PIPE)     
+        list_Pakages = [
+                        "which aspell            > /dev/unll 2>&1 ",
+                        "which gnome-terminal    > /dev/unll 2>&1 ",
+                        ]       
+        for package in list_Pakages :
+            test_packages = subprocess.call(  package ,shell=True,stderr=subprocess.PIPE,stdout=PIPE)  
+            if test_packages == 0  :                     
+                 continue
+            else:  
+                  subprocess.call(package,shell=True,stderr=subprocess.PIPE,stdout=PIPE) 
     def __Connect_Openai(self):   
         import requests 
         import json
