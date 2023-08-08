@@ -35,7 +35,7 @@ class Control:
             sys.stdout.flush()
             time.sleep(4./90)       
         try:
-            Input_Key = str(input(Y+"🌏 add the API KEY   : "+W)).strip()#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
+            Input_Key = str(input(Y+"🌏 add the API KEY   : "+W)).strip()
         except :
             pass   
         with open('./Chat_Package/.KEY_AI.json','w') as APIKEY:
