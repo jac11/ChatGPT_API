@@ -9,6 +9,7 @@ W='\033[0m'
 R='\033[1;31m'        
 B='\033[1;34m' 
 Y='\033[1;33m' 
+argv_call = [argv for argv in sys.argv]
 
 class Control:
     def __init__(self): 
@@ -60,10 +61,10 @@ class Control:
                 },
             ) 
             if response.status_code == 200:
-               time.sleep(2)
-               os.system('cls||clear')
-               time.sleep(3)
-               self.Control_all()
+                time.sleep(2)
+                os.system('cls||clear')
+                time.sleep(3)
+                self.Control_all()
             else:
                 from Chat_Package.Error_HTTP import Error_HTTP
                 run = Error_HTTP(self)
@@ -76,7 +77,22 @@ class Control:
                         exit()    
         Test_API()                       
     def Control_all(self):
-        run = Banner_Logo()
-        run = Chat_GPT()
+        if "--webchat"in sys.argv  :
+            from Chat_Package.web_zip import Web_side
+        elif "--termainl" in sys.argv:
+            run = Banner_Logo()
+            run = Chat_GPT()
+        elif "-T" in sys.argv:
+            run = Banner_Logo()
+            run = Chat_GPT()  
+        elif "-W" in sys.argv:
+             from Chat_Package.web_zip import Web_side   
+        else:
+            printf="""usage: Chatgpt [ -C ] or [ --color-off ]  [ --termainl ] or [ -T ] [ --webchat ] [ -W ]
+                  🚨️  -C  --color-off    ignuor the color 
+                  🚨️  -T  --termainl     chat in termainl interface
+                  🚨️  -W  --webchat      chat in webside interface
+                """    
+            print(printf)
 if __name__=='__main__':
     Control()
