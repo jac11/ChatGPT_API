@@ -21,12 +21,42 @@ B='\033[1;34m'
 P='\033[35m'   
 Y='\033[1;33m' 
 
+def Check_argv():
+    printf="""usage: Chatgpt [ -C ] or [ --color-off ]  [ --termainl ] or [ -T ] [ --webchat ] [ -W ]
+                  🚨️  -C  --color-off    ignuor the color 
+                  🚨️  -T  --termainl     chat in termainl interface
+                  🚨️  -W  --webchat      chat in webside interface
+                """
+    Command_Useful  =["--color-off","--termainl","--webchat",'-W','-T','-C']
 
-                
+    if "python" or "python3" in sys.argv[0]:
+        lenAV = sys.argv[1:]
+    else:
+        lenAV = sys.argv[0:]     
+    if len(lenAV) == 0 or  len(lenAV) > 2:       
+        print(printf)       
+        exit()
+    else:  
+        for command in lenAV: 
+            if command not in Command_Useful:
+                print(printf)
+                exit()
+            if command in Command_Useful:
+                if "--color-off" or "-C" in command:
+                        global W 
+                        global R 
+                        global B  
+                        global Y 
+                        W , R , B ,Y ="","","",""  
+                elif "--webchat" or "-W" in command :
+                          pass
+                elif "--termainl" or -T in command:
+                         pass                  
+Check_argv()               
 class Chat_GPT:
-    def __init__(self):
+    def __init__(self):    
         self.__Connect_Openai()
-    def _Conections(self):
+    def _Conections(self): 
         Check_Internet ='ping  -w1 www.google.com  >/dev/null 2>&1 '   
         communicate = os.system(Check_Internet)
         if communicate  == 0 :
@@ -35,6 +65,7 @@ class Chat_GPT:
             if communicate == 512:
                 print("[+] No Internet Connection")
                 exit()  
+        
     def _Check_Import (self):  
         Check_Import ="pip show requests"
         Check_Import = subprocess.call(Check_Import,shell=True,stderr=subprocess.PIPE,stdout=PIPE) 
@@ -54,7 +85,7 @@ class Chat_GPT:
                  continue
             else:  
                   subprocess.call(package,shell=True,stderr=subprocess.PIPE,stdout=PIPE) 
-    def __Connect_Openai(self):   
+    def __Connect_Openai(self): 
         import requests 
         import json
         with open("Chat_Package/.KEY_AI.json") as json_File:
