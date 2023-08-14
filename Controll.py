@@ -1,19 +1,19 @@
 #!/usr/bin/env  python
 import os
+import sys
 import requests
-from Chat_Package.ChatGpt import Chat_GPT
+from Chat_Package.ChatGpt import Chat_GPT,Check_argv
 from Chat_Package.Banner import *
-
+import sys
 W='\033[0m'     
-R='\033[1;31m'    
-G='\033[0;32m'    
+R='\033[1;31m'        
 B='\033[1;34m' 
-P='\033[35m'   
 Y='\033[1;33m' 
 
 class Control:
-    def __init__(self):
+    def __init__(self): 
         Chat_GPT._Conections(self)
+        Check_argv()
         Chat_GPT._Check_Import(self)
         Check_key = os.listdir("./Chat_Package/")
         if ".KEY_AI.json" in Check_key :
