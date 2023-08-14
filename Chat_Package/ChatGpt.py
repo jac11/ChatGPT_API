@@ -28,7 +28,6 @@ def Check_argv():
                   🚨️  -W  --webchat      chat in webside interface
                 """
     Command_Useful  =["--color-off","--termainl","--webchat",'-W','-T','-C']
-
     if "python" or "python3" in sys.argv[0]:
         lenAV = sys.argv[1:]
     else:
@@ -47,11 +46,7 @@ def Check_argv():
                         global R 
                         global B  
                         global Y 
-                        W , R , B ,Y ="","","",""  
-                elif "--webchat" or "-W" in command :
-                          pass
-                elif "--termainl" or -T in command:
-                         pass                  
+                        W , R , B ,Y ="","","",""                                                     
 Check_argv()               
 class Chat_GPT:
     def __init__(self):    
