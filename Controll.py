@@ -5,22 +5,35 @@ import requests
 from Chat_Package.ChatGpt import Chat_GPT,Check_argv
 from Chat_Package.Banner import *
 import sys
-W='\033[0m'     
-R='\033[1;31m'        
-B='\033[1;34m' 
-Y='\033[1;33m' 
-argv_call = [argv for argv in sys.argv]
 
+if "--color-off" in sys.argv:
+    W,R,B,Y ='','','',''   
+elif "-C" in sys.argv:
+    W,R,B,Y ='','','',''
+else:  
+    W,R,B,Y = '\033[0m','\033[1;31m','\033[1;34m' ,'\033[1;33m'   
+printf="""usage: Chatgpt [ -C ] or [ --color-off ]  [ --termainl ] or [ -T ] [ --webchat ] [ -W ]
+                  🚨️  -C  --color-off    ignuor the color 
+                  🚨️  -T  --termainl     chat in termainl interface
+                  🚨️  -W  --webchat      chat in webside interface
+                """         
 class Control:
     def __init__(self): 
         Chat_GPT._Conections(self)
-        Check_argv()
+        Check_argv.__init__()   
         Chat_GPT._Check_Import(self)
         Check_key = os.listdir("./Chat_Package/")
         if ".KEY_AI.json" in Check_key :
             self.Control_all()
-        else:  
-            self._Input_Info()
+        else:
+            if "--color-off" in sys.argv[1] and len(sys.argv)==2:
+               Banner2_logo()
+               print(printf)
+            elif "-C" in sys.argv[1] and len(sys.argv)==2:
+               Banner2_logo()
+               print(printf)   
+            else:   
+                self._Input_Info()
     def _Input_Info(self):
         run =Banner2_logo()
         Info = R+"""\t\t\t    for first time run 
@@ -88,11 +101,7 @@ class Control:
         elif "-W" in sys.argv:
              from Chat_Package.web_zip import Web_side   
         else:
-            printf="""usage: Chatgpt [ -C ] or [ --color-off ]  [ --termainl ] or [ -T ] [ --webchat ] [ -W ]
-                  🚨️  -C  --color-off    ignuor the color 
-                  🚨️  -T  --termainl     chat in termainl interface
-                  🚨️  -W  --webchat      chat in webside interface
-                """    
+            
             print(printf)
 if __name__=='__main__':
     Control()
