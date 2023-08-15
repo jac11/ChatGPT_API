@@ -1,23 +1,13 @@
 #!/usr/bin/env python
 import sys
 import time
-if "color-off" or "-C" in sys.argv:
-    W=''     
-    R=''    
-    G=''    
-    B='' 
-    P=''   
-    Y='' 
-    O='' 
-else:    
-    W='\033[0m'     
-    R='\033[1;31m'    
-    G='\033[0;32m'    
-    B='\033[1;34m' 
-    P='\033[35m'   
-    Y='\033[1;33m' 
-    O='\033[37m'   
-
+if "--color-off" in sys.argv:
+    W,R,B,Y ,O ='','','','',''   
+elif "-C" in sys.argv:
+    W,R,B,Y,O ='','','','',''
+else:  
+    W,R,B,Y,O = '\033[0m','\033[1;31m','\033[1;34m' ,'\033[1;33m' , '\033[37m' 
+     
 def Banner_Logo():
       Banner1 = O+"""                                                                                                       
                                   Oxc;'....';cx0                  

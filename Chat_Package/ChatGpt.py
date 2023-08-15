@@ -10,16 +10,17 @@ import json
 import readline
 import signal
 import threading
+from Chat_Package.Banner import *
 for i in range(readline.get_current_history_length()):
     print (readline.get_history_item(i + 1))
     print(readline.get_line_buffer())
     
-W='\033[0m'     
-R='\033[1;31m'    
-G='\033[0;32m'    
-B='\033[1;34m' 
-P='\033[35m'   
-Y='\033[1;33m' 
+if "--color-off" in sys.argv:
+    W,R,B,Y ='','','',''   
+elif "-C" in sys.argv:
+    W,R,B,Y ='','','',''
+else:  
+    W,R,B,Y = '\033[0m','\033[1;31m','\033[1;34m' ,'\033[1;33m' 
 
 def Check_argv():
     printf="""usage: Chatgpt [ -C ] or [ --color-off ]  [ --termainl ] or [ -T ] [ --webchat ] [ -W ]
@@ -39,14 +40,7 @@ def Check_argv():
         for command in lenAV: 
             if command not in Command_Useful:
                 print(printf)
-                exit()
-            if command in Command_Useful:
-                if "--color-off" or "-C" in command:
-                        global W 
-                        global R 
-                        global B  
-                        global Y 
-                        W , R , B ,Y ="","","",""                                                     
+                exit()                                                                        
 Check_argv()               
 class Chat_GPT:
     def __init__(self):    
