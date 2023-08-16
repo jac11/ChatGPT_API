@@ -8,6 +8,7 @@ from subprocess import PIPE,Popen,check_output
 from zipfile import ZipFile
 import sys
 import re
+import base64
 
 if "--color-off" in sys.argv:
     W,R,B,Y ='','','',''   
@@ -15,7 +16,7 @@ elif "-C" in sys.argv:
     W,R,B,Y ='','','',''
 else:  
     W,R,B,Y = '\033[0m','\033[1;31m','\033[1;34m' ,'\033[1;33m' 
-
+#const API_KEY_64 = ""; // Paste your API key here
 class Web_side :
     def __init__(self):
         Banner2_logo()
@@ -28,8 +29,14 @@ class Web_side :
         else:    
             with ZipFile("./Chat_Package/Web_Side.zip",'r') as unzipweb :
                 unzipweb.extractall(path='./Chat_Package/')
-        #       os.remove('./Chat_Package/Web_Side.zip') 
-    def Set_Web(self):    
+                os.remove('./Chat_Package/Web_Side.zip') 
+            with open ("Chat_Package/.KEY_AI.json" ,'r') as Key_ai :
+                 Key_ai = Key_ai.read().split(":")[1][2:-3]
+            encoded_64 = str(base64.b64encode(Key_ai.encode())).replace("b'",'').replace("'",'')
+            with open("Chat_Package/Web_Side/script.js",'r') as js:
+               js = js.read().replace('const API_KEY_64 = ""; // Paste your API key here','const API_KEY_64 ="'+encoded_64+'"')
+            with open("Chat_Package/Web_Side/script.js",'w') as jscript:
+                jscript.write(js)   
         genrate_port = [num for num in range(5001,8000)]
         set_port = random.choice(genrate_port)
         with open('./Chat_Package/Web_Side/.port','w') as port:
@@ -58,7 +65,7 @@ class Web_side :
             for p in rex_port:
                 web_port.append(p)    
         while True: 
-            time.sleep(2)           
+            time.sleep(4)           
             test = subprocess.run(['ps -uax '],shell=True,capture_output=True)
             if "firefox-esr" in test.stdout.decode():
                Check_Browser()
@@ -70,8 +77,7 @@ class Web_side :
         for port in web_port:
             kill_port = 'fuser -k  '+port+"/tcp"
             os.system(kill_port)      
-        print("Process id is kill")
-        print("kill the port")
+        print("Server Status    : Website down")
 if __name__ == '__main__':
     Web_side()            
                
