@@ -23,7 +23,7 @@ class Web_side :
         self.Set_Web()
         self.Chech_Web_IN_Process()
     def unzip_web(self): 
-        if os.path.exists("./Chat_Package/Chat_Web"):
+        if os.path.exists("./Chat_Package/Web_Side"):
             pass
         else:    
             with ZipFile("./Chat_Package/Web_Side.zip",'r') as unzipweb :
@@ -32,34 +32,46 @@ class Web_side :
     def Set_Web(self):    
         genrate_port = [num for num in range(5001,8000)]
         set_port = random.choice(genrate_port)
-        with open('./Chat_Package/Chat_Web/.port','w') as port:
+        with open('./Chat_Package/Web_Side/.port','w') as port:
             port.write(str(set_port))
-        with open('./Chat_Package/Chat_Web/.port','r')as readport :
+        with open('./Chat_Package/Web_Side/.port','r')as readport :
             port =readport.read()
-        Command = 'nohup python ./Chat_Package/Chat_Web/server.py  >/dev/null 2>&1 & '
-        print(R+'🌏 Web Chat server at :',Y+'http://127.0.0.1:'+port+"/Chat_Package/Chat_Web/")
+        Command = 'nohup python ./Chat_Package/Web_Side/server.py  >/dev/null 2>&1 & '
+        print(R+'🌏 Web Chat server at :',Y+'http://127.0.0.1:'+port+"/Chat_Package/Web_Side/")
         os.system(Command) 
     def Chech_Web_IN_Process(self): 
-        while True :
-            if os.system('ps -A | grep firefox >/dev/null 2>&1') == 0:
-              continue
-            else:
-                listIDS = []
-                get_id = "lsof  | grep  python | grep LISTEN >.code "
-                subprocess.call(get_id,shell=True,stderr=subprocess.PIPE,stdout=PIPE)
-                with open('./.code','r') as output:
+        Process_ID = []
+        web_port = []
+        def Check_Broews():
+            get_id = "lsof  | grep  python | grep LISTEN >.code "
+            subprocess.call(get_id,shell=True,stderr=subprocess.PIPE,stdout=PIPE)
+            with open('./.code','r') as output:
                     lsof = output.read().replace("python    ",'').replace("python3    ",'').replace("                        ",'-')
-                with open(".code",'w') as data : 
-                    data.write(lsof)
-                with open(".code",'r') as readdata:
-                     readdata = readdata.read()
-                rex = str("".join(re.findall('.+-',readdata))).split('-')
-                for ID in rex:
-                    kill_id = "kill -9 "+ID
-                    subprocess.call(kill_id,shell=True,stderr=subprocess.PIPE,stdout=PIPE)           
-                print('Browser is closed') 
-                exit()
-            time.sleep(3)       
+            with open(".code",'w') as data : 
+                data.write(lsof)
+            with open(".code",'r') as readdata:
+                    readdata = readdata.read()
+            rex_id = str("".join(re.findall('.+-',readdata))).split('-')
+            rex_port = str("".join(re.findall(':\\d+',readdata))).split(":")[1:]
+            for i in rex_id:
+                Process_ID.append(i)
+            for p in rex_port:
+                web_port.append(p)    
+        while True: 
+            time.sleep(2)           
+            test = subprocess.run(['ps -uax '],shell=True,capture_output=True)
+            if "firefox-esr" in test.stdout.decode():
+               Check_Broews()
+            else:
+                break    
+        for ID in Process_ID :
+          kill_id = "kill -9 "+str(ID)
+          subprocess.call(kill_id,shell=True,stderr=subprocess.PIPE,stdout=PIPE) 
+        for port in web_port:
+            kill_port = 'fuser -k  '+port+"/tcp"
+            os.system(kill_port)      
+        print("Process id is kill")
+        print("kill the port")
 if __name__ == '__main__':
     Web_side()            
                
