@@ -37,6 +37,7 @@ class Web_side :
                js = js.read().replace('const API_KEY_64 = ""; // Paste your API key here','const API_KEY_64 ="'+encoded_64+'"')
             with open("Chat_Package/Web_Side/script.js",'w') as jscript:
                 jscript.write(js)   
+    def Set_Web(self):            
         genrate_port = [num for num in range(5001,8000)]
         set_port = random.choice(genrate_port)
         with open('./Chat_Package/Web_Side/.port','w') as port:
@@ -65,7 +66,7 @@ class Web_side :
             for p in rex_port:
                 web_port.append(p)    
         while True: 
-            time.sleep(4)           
+            time.sleep(5)           
             test = subprocess.run(['ps -uax '],shell=True,capture_output=True)
             if "firefox-esr" in test.stdout.decode():
                Check_Browser()
