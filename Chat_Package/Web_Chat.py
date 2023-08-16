@@ -42,7 +42,7 @@ class Web_side :
     def Chech_Web_IN_Process(self): 
         Process_ID = []
         web_port = []
-        def Check_Broews():
+        def Check_Browser():
             get_id = "lsof  | grep  python | grep LISTEN >.code "
             subprocess.call(get_id,shell=True,stderr=subprocess.PIPE,stdout=PIPE)
             with open('./.code','r') as output:
@@ -61,7 +61,7 @@ class Web_side :
             time.sleep(2)           
             test = subprocess.run(['ps -uax '],shell=True,capture_output=True)
             if "firefox-esr" in test.stdout.decode():
-               Check_Broews()
+               Check_Browser()
             else:
                 break    
         for ID in Process_ID :
