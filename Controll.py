@@ -96,7 +96,8 @@ class Control:
             exit()                             
     def Control_all(self):
         if "--webchat"in sys.argv  :
-            from Chat_Package.web_zip import Web_side
+            from Chat_Package.Web_Chat import Web_side
+            run = Web_side()
         elif "--termainl" in sys.argv:
             run = Banner_Logo()
             run = Chat_GPT()
@@ -104,7 +105,8 @@ class Control:
             run = Banner_Logo()
             run = Chat_GPT()  
         elif "-W" in sys.argv:
-            from Chat_Package.web_zip import Web_side   
+            from Chat_Package.Web_Chat import Web_side   
+            run = Web_side()
         else:                
             print(printf)
         
