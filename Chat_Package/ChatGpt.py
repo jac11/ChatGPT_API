@@ -23,12 +23,12 @@ else:
     W,R,B,Y = '\033[0m','\033[1;31m','\033[1;34m' ,'\033[1;33m' 
 
 def Check_argv():
-    printf="""usage: Chatgpt [ -C ] or [ --color-off ]  [ --termainl ] or [ -T ] [ --webchat ] [ -W ]
-                  🚨️  -C  --color-off    ignuor the color 
-                  🚨️  -T  --termainl     chat in termainl interface
+    printf="""usage: Chatgpt [ -C ] or [ --color-off ]  [ --terminal ] or [ -T ] [ --webchat ] [ -W ]
+                  🚨️  -C  --color-off    ignore the color 
+                  🚨️  -T  --terminal     chat in terminal interface
                   🚨️  -W  --webchat      chat in webside interface
                 """
-    Command_Useful  =["--color-off","--termainl","--webchat",'-W','-T','-C']
+    Command_Useful  =["--color-off","--terminal","--webchat",'-W','-T','-C']
     if "python" or "python3" in sys.argv[0]:
         lenAV = sys.argv[1:]
     else:

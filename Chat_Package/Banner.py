@@ -70,7 +70,7 @@ def Banner2_logo():
           WXc.      ;xXM.      WM.              :kXMMMMWKx,    oMMXWMMW0:   .oKWWNXNX.  XMM    KMM.;MMO       kMMc ;MMx
             ,MN0OOXMW        :NW                   .....       oMM,....        .....    ...    ... ...         ...  ...
                     WXxl::lkNX                                 oMM,                                                   
-                                                               .''.       """+Y+"""Terminal and web interface
+                                                               .''.       """+Y+"""Terminal & web interface
                                                                              By-jacstory"""
                                                                
       print(B+Banner2+W)  
