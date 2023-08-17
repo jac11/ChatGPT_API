@@ -12,9 +12,9 @@ elif "-C" in sys.argv:
     W,R,B,Y ='','','',''
 else:  
     W,R,B,Y = '\033[0m','\033[1;31m','\033[1;34m' ,'\033[1;33m'   
-printf="""usage: Chatgpt [ -C ] or [ --color-off ]  [ --termainl ] or [ -T ] [ --webchat ] [ -W ]
-                  🚨️  -C  --color-off    ignuor the color 
-                  🚨️  -T  --termainl     chat in termainl interface
+printf="""usage: Chatgpt [ -C ] or [ --color-off ]  [ --terminal ] or [ -T ] [ --webchat ] [ -W ]
+                  🚨️  -C  --color-off    ignore the color 
+                  🚨️  -T  --terminal     chat in terminal interface
                   🚨️  -W  --webchat      chat in webside interface
                 """         
 class Control:
@@ -98,7 +98,7 @@ class Control:
         if "--webchat"in sys.argv  :
             from Chat_Package.Web_Chat import Web_side
             run = Web_side()
-        elif "--termainl" in sys.argv:
+        elif "--terminal" in sys.argv:
             run = Banner_Logo()
             run = Chat_GPT()
         elif "-T" in sys.argv:
