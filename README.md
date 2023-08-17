@@ -15,8 +15,7 @@ Welcome to the ChatGPT_API Python Object README file! This Python Code  allows y
 To get started, follow these steps to install the ChatGPT_API Python Object package:
 
 bash
-
-pip install chatgpt-api-python
+git clone 
 
 Usage
 Terminal Chat
