@@ -9,6 +9,7 @@ else:
     W,R,B,Y,O = '\033[0m','\033[1;31m','\033[1;34m' ,'\033[1;33m' , '\033[37m' 
      
 def Banner_Logo():
+    try:
       Banner1 = O+"""                                                                                                       
                                   Oxc;'....';cx0                  
                              .0d:'..............'cd0'             
@@ -51,6 +52,8 @@ def Banner_Logo():
           sys.stdout.write(text)
           sys.stdout.flush()
           time.sleep(4./90) 
+    except KeyboardInterrupt:
+         exit()      
 def Banner2_logo():
       Banner2 = """    
  

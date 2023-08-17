@@ -45,7 +45,7 @@ class Web_side :
         with open('./Chat_Package/Web_Side/.port','r')as readport :
             port =readport.read()
         Command = 'nohup python ./Chat_Package/Web_Side/server.py  >/dev/null 2>&1 & '
-        print(R+'🌏 Web Chat server at :',Y+'http://127.0.0.1:'+port+"/Chat_Package/Web_Side/")
+        print(R+'🌏 Web Chat server at  : ',Y+'http://127.0.0.1:'+port+"/Chat_Package/Web_Side/")
         os.system(Command) 
     def Chech_Web_IN_Process(self): 
         Process_ID = []
@@ -77,8 +77,10 @@ class Web_side :
           subprocess.call(kill_id,shell=True,stderr=subprocess.PIPE,stdout=PIPE) 
         for port in web_port:
             kill_port = 'fuser -k  '+port+"/tcp"
-            os.system(kill_port)      
-        print("Server Status    : Website down")
+            os.system(kill_port) 
+        print(R+"🚨️ Browser Status      :  "+B+"Browser Close")      
+        time.sleep(.30)  
+        print(R+"🚨️ Server Status       :  "+B+"Website down")
 if __name__ == '__main__':
     Web_side()            
                
