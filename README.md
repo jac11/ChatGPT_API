@@ -64,8 +64,8 @@ To get started, follow these steps to install the ChatGPT_API :
  
 ------------------------------------------------------------------------------------------------------------------------
 
-## Connet Me :
+## Connect Me :
 * jac11devel@gmail.com
-*Thank you 
+* Thank you 
   
 
