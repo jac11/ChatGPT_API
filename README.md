@@ -36,7 +36,7 @@
 ### OPtions
   * Terminal Chat (-T or --terminal): Engage in natural language conversations with ChatGPT directly from your terminal.Receive instant responses and make use of its language capabilities.
 
- * Website Chat Interface (-W or --chatweb): Communicate with ChatGPT through a website hosted on your local server using HTTP.Each time you use the website interface, the server will select a random available port. The server automatically closes when you close your browser.
+ * Website Chat Interface (-W or --chatweb): Communicate with ChatGPT through a website hosted on your local server using python HTTP server to make  the web up .
 
  * Text Color Control (-C or --color-of): Customize the color of the displayed code text when using the terminal chat option. Choose from a variety of colors to enhance code readability.
 ---------------------------------------------------------------------------------------------------
