@@ -1,9 +1,8 @@
 # ChatGPT_API 
-## Python Object - Terminal and Website Chat Interface
+## Python Object - Terminal and Website Chat Interface -medule 3.5
 
 *  Welcome to the ChatGPT_API Python Object README file! This Python Code  allows you to integrate the power of ChatGPT into both your terminal and website, providing a versatile conversational experience. The object offers three main options for interacting with ChatGPT:
-*  ChatGPT_API along with a spelling tool to correct spelling errors strem in the chat session.
-
+ 
 -------------------------------------------------------------------------------------------------------------
 ## info about Openai
   * OpenAI is a pioneering organization in artificial intelligence research. Their mission is to ensure that artificial general intelligence (AGI) benefits all of humanity. ChatGPT is one of OpenAI's            remarkable creations, built upon the foundation of GPT (Generative Pre-trained Transformer) models.
@@ -22,6 +21,17 @@
     License
   * Feel free to contribute, report issues, and suggest enhancements on GitHub.
   * Feel free to adapt and expand upon this README according to your project's requirements. Be sure to replace placeholders like your-username and your-repo with your actual GitHub username and repository       name. If you have more questions or need further assistance, feel free to ask!
+--------------------------------------------------------------------------------------------------------------------------
+### required
+### The ChatGPT_API will check for required packages and internet connection. It will install all the necessary packages in the background
+  * ### Noted :-
+    * Some errors can occur because permission to create folders and files is needed "to help ChatGPT_API function properly." So, run with sudo if it happens.   
+
+*  ChatGPT_API along with a spelling tool to correct spelling errors strem in the chat session.
+*  ChatGPT_API use requests python library to integrate with chatgpt openail
+*  GNOME Shell  it required use to call aspell tool to fix spelling
+*  dbus-x11 regureid th system call GNOME Shell
+  
 --------------------------------------------------------------------------------------------------------------------------
 ### OPtions
   * Terminal Chat (-T or --terminal): Engage in natural language conversations with ChatGPT directly from your terminal.Receive instant responses and make use of its language capabilities.
