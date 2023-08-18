@@ -2,6 +2,8 @@
 ## Python Object - Terminal and Website Chat Interface
 
 *  Welcome to the ChatGPT_API Python Object README file! This Python Code  allows you to integrate the power of ChatGPT into both your terminal and website, providing a versatile conversational experience. The object offers three main options for interacting with ChatGPT:
+*  ChatGPT_API along with a spelling tool to correct spelling errors strem in the chat session.
+
 -------------------------------------------------------------------------------------------------------------
 ## info about Openai
   * OpenAI is a pioneering organization in artificial intelligence research. Their mission is to ensure that artificial general intelligence (AGI) benefits all of humanity. ChatGPT is one of OpenAI's            remarkable creations, built upon the foundation of GPT (Generative Pre-trained Transformer) models.
@@ -28,6 +30,13 @@
 
  * Text Color Control (-C or --color-of): Customize the color of the displayed code text when using the terminal chat option. Choose from a variety of colors to enhance code readability.
 ---------------------------------------------------------------------------------------------------
+## ChatGPT_API on Local Server 
+* ChatGPT API on a local server. The unique aspect of this setup is that the server generates a random port each time it runs, and it will automatically close when you close your web browser. This allows you to interact with ChatGPT through a web-based interface in a secure and controlled environment.
+## Note
+* ### HTML CSS and JavaScript use in this porject get ready From Codingnepal
+* [codingnepal](https://www.codingnepalweb.com/create-chatgpt-clone-html-css-javascript/)
+* Thank you Codingnepal for support
+----------------------------------------------------------------------------------------------
 ### Installation
 
 To get started, follow these steps to install the ChatGPT_API :
@@ -37,32 +46,26 @@ To get started, follow these steps to install the ChatGPT_API :
  * chmod +x chatgpt_api.py
  ------------------------------------------------------------------------------------------------------  
 ## Usage
-  * tp 
-Terminal Chat
+* Engage in a conversation using the terminal chat option by running: --terminal or -T
+  ```
+  chatgpt_api --terminal
+  chatgpt_api.py -T 
+  ```
+ * Start a local web server to access the ChatGPT website chat interfacee --webchat or -W
+   ```
+   chatgpt_api.py --webchat
+   chatgpt_api -W
+    ``` 
+ * Supported colo Code Use : red, blue, yellow
+ * if need to  ignore the color in the terminal chat   --color-off or -C
+   ```
+   chatgpt_api.py -C -T 
+   ```
+ 
+------------------------------------------------------------------------------------------------------------------------
 
-Engage in a conversation using the terminal chat option by running:
-
-bash
-
-chatgpt-terminal
-
-Website Chat Interface
-
-Start a local web server to access the ChatGPT website chat interface:
-
-bash
-
-chatgpt-web
-
-Visit http://localhost:random_port in your web browser to begin chatting. The server will automatically close when you close your browser.
-Text Color Control
-
-To specify the text color when using the terminal chat option, use the --color-of flag followed by a color name:
-
-bash
-
-chatgpt-terminal --color-of red
-
-Supported color options: red, green, blue, yellow, magenta, cyan, white.
-More About OpenAI and ChatGPT
+## Connet Me :
+* jac11devel@gmail.com
+*Thank you 
+  
 
