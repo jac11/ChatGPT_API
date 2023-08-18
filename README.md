@@ -18,7 +18,6 @@
   ### Security Note
    * Keep your API key secure and never expose it publicly. Treat it like a password, as it provides access to the OpenAI services and resources.
     License
-  * This package is licensed under the MIT License.
   * Feel free to contribute, report issues, and suggest enhancements on GitHub.
   * Feel free to adapt and expand upon this README according to your project's requirements. Be sure to replace placeholders like your-username and your-repo with your actual GitHub username and repository       name. If you have more questions or need further assistance, feel free to ask!
 --------------------------------------------------------------------------------------------------------------------------
