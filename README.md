@@ -1,21 +1,22 @@
 # ChatGPT_API 
 ## Python Object - Terminal and Website Chat Interface
 
-Welcome to the ChatGPT_API Python Object README file! This Python Code  allows you to integrate the power of ChatGPT into both your terminal and website, providing a versatile conversational experience. The package offers three main options for interacting with ChatGPT:
-
+*  Welcome to the ChatGPT_API Python Object README file! This Python Code  allows you to integrate the power of ChatGPT into both your terminal and website, providing a versatile conversational experience. The object offers three main options for interacting with ChatGPT:
+-------------------------------------------------------------------------------------------------------------
 ### OPtions
   * Terminal Chat (-T or --terminal): Engage in natural language conversations with ChatGPT directly from your terminal.Receive instant responses and make use of its language capabilities.
 
  * Website Chat Interface (-W or --chatweb): Communicate with ChatGPT through a website hosted on your local server using HTTP.Each time you use the website interface, the server will select a random available port. The server automatically closes when you close your browser.
 
  * Text Color Control (-C or --color-of): Customize the color of the displayed code text when using the terminal chat option. Choose from a variety of colors to enhance code readability.
-
+---------------------------------------------------------------------------------------------------
 ### Installation
 
-To get started, follow these steps to install the ChatGPT_API Python Object package:
+To get started, follow these steps to install the ChatGPT_API :
 
-[git clone](https://github.com/jac11/ChatGPT_API.git) 
-
+ * git clone https://github.com/jac11/ChatGPT_API.git
+ * cd ChatGPT_API
+ * chmod +x  
 Usage
 Terminal Chat
 
