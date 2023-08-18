@@ -1,5 +1,5 @@
 # ChatGPT_API 
-## Python Object - Terminal and Website Chat Interface -medule 3.5
+## Python Object - Terminal and Website Chat Interface -models GPT-3.5
 
 *  Welcome to the ChatGPT_API Python Object README file! This Python Code  allows you to integrate the power of ChatGPT into both your terminal and website, providing a versatile conversational experience. The object offers three main options for interacting with ChatGPT:
  
