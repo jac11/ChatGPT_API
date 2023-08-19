@@ -9,6 +9,9 @@ from zipfile import ZipFile
 import sys
 import re
 import base64
+python = "ls /usr/bin/python*"
+reslut = subprocess.run(python,shell=True,capture_output=True)
+reslut= str(reslut.stdout.decode()).split()[0][-7:]
 
 if "--color-off" in sys.argv:
     W,R,B,Y ='','','',''   
@@ -44,7 +47,7 @@ class Web_side :
             port.write(str(set_port))
         with open('./Chat_Package/Web_Side/.port','r')as readport :
             port =readport.read()
-        Command = 'nohup python ./Chat_Package/Web_Side/server.py  >/dev/null 2>&1 & '
+        Command = 'nohup '+reslut+' ./Chat_Package/Web_Side/server.py  >/dev/null 2>&1 & '
         print(R+'🌏 Web Chat server at  : ',Y+'http://127.0.0.1:'+port+"/Chat_Package/Web_Side/")
         os.system(Command) 
     def Chech_Web_IN_Process(self): 
@@ -68,7 +71,7 @@ class Web_side :
         while True: 
             time.sleep(5)           
             test = subprocess.run(['ps -uax '],shell=True,capture_output=True)
-            if "firefox-esr" in test.stdout.decode():
+            if "firefox" in test.stdout.decode():
                Check_Browser()
             else:
                 break    
@@ -76,7 +79,7 @@ class Web_side :
           kill_id = "kill -9 "+str(ID)
           subprocess.call(kill_id,shell=True,stderr=subprocess.PIPE,stdout=PIPE) 
         for port in web_port:
-            kill_port = 'fuser -k  '+port+"/tcp"
+            kill_port = 'fuser -k  '+port+"/tcp >/dev/null 2>&1"
             os.system(kill_port) 
         print(R+"🚨️ Browser Status      :  "+B+"Browser Close")      
         time.sleep(.30)  
