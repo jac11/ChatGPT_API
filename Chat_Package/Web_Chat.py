@@ -11,7 +11,7 @@ import re
 import base64
 python = "ls /usr/bin/python*"
 reslut = subprocess.run(python,shell=True,capture_output=True)
-reslut= str(reslut.stdout.decode()).split()[0][-7:]
+reslut= str(reslut.stdout.decode()).split()[0][-7:].replace("/".'')
 
 if "--color-off" in sys.argv:
     W,R,B,Y ='','','',''   
