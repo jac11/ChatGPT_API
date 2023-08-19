@@ -70,8 +70,8 @@ class Web_side :
                 web_port.append(p)    
         while True: 
             time.sleep(5)           
-            test = subprocess.run(['ps -uax '],shell=True,capture_output=True)
-            if "firefox" in test.stdout.decode():
+            test = subprocess.run(['ps -uax '],shell=True,capture_output=True) 
+            if "firefox" in test.stdout.decode() and "isForBrowser" in test.stdout.decode():
                Check_Browser()
             else:
                 break    
@@ -85,5 +85,4 @@ class Web_side :
         time.sleep(.30)  
         print(R+"🚨️ Server Status       :  "+B+"Website down")
 if __name__ == '__main__':
-    Web_side()            
-               
+    Web_side()
