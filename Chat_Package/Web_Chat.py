@@ -79,8 +79,8 @@ class Web_side :
           kill_id = "kill -9 "+str(ID)
           subprocess.call(kill_id,shell=True,stderr=subprocess.PIPE,stdout=PIPE) 
         for port in web_port:
-            kill_port = 'fuser -k  '+port+"/tcp >/dev/null 2>&1"
-            os.system(kill_port) 
+            kill_port = 'fuser -k  '+port+"/tcp"
+            subprocess.call(kill_port,shell=True,stderr=subprocess.PIPE,stdout=PIPE)
         print(R+"🚨️ Browser Status      :  "+B+"Browser Close")      
         time.sleep(.30)  
         print(R+"🚨️ Server Status       :  "+B+"Website down")
