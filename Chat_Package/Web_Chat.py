@@ -3,7 +3,7 @@ import os
 import random
 import time
 import subprocess
-#from Chat_Package.Banner import Banner2_logo
+from Chat_Package.Banner import Banner2_logo
 from subprocess import PIPE,Popen,check_output
 from zipfile import ZipFile
 import sys
@@ -22,8 +22,8 @@ else:
 #const API_KEY_64 = ""; // Paste your API key here
 class Web_side :
     def __init__(self):
-      #  Banner2_logo()
-       # self.unzip_web()
+        Banner2_logo()
+        self.unzip_web()
         self.Set_Web()
         self.Chech_Web_IN_Process()
     def unzip_web(self): 
