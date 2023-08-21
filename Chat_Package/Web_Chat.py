@@ -3,7 +3,7 @@ import os
 import random
 import time
 import subprocess
-from Chat_Package.Banner import Banner2_logo
+#from Chat_Package.Banner import Banner2_logo
 from subprocess import PIPE,Popen,check_output
 from zipfile import ZipFile
 import sys
@@ -22,8 +22,8 @@ else:
 #const API_KEY_64 = ""; // Paste your API key here
 class Web_side :
     def __init__(self):
-        Banner2_logo()
-        self.unzip_web()
+      #  Banner2_logo()
+       # self.unzip_web()
         self.Set_Web()
         self.Chech_Web_IN_Process()
     def unzip_web(self): 
@@ -57,7 +57,7 @@ class Web_side :
             get_id = "lsof  | grep  python | grep LISTEN >.code "
             subprocess.call(get_id,shell=True,stderr=subprocess.PIPE,stdout=PIPE)
             with open('./.code','r') as output:
-                    lsof = output.read().replace("python    ",'').replace("python3    ",'').replace("                        ",'-')
+                    lsof = output.read()[-118:].replace(" ",'',1)
             with open(".code",'w') as data : 
                 data.write(lsof)
             with open(".code",'r') as readdata:
@@ -65,9 +65,18 @@ class Web_side :
             rex_id = str("".join(re.findall('.+-',readdata))).split('-')
             rex_port = str("".join(re.findall(':\\d+',readdata))).split(":")[1:]
             for i in rex_id:
-                Process_ID.append(i)
+                if i in Process_ID:
+                    pass
+                else:  
+                    if i == '':
+                       pass
+                    else:     
+                        Process_ID.append(i)
             for p in rex_port:
-                web_port.append(p)    
+                if p in web_port:
+                    pass
+                else:
+                    web_port.append(p)    
         while True: 
             time.sleep(5)           
             test = subprocess.run(['ps -uax '],shell=True,capture_output=True) 
