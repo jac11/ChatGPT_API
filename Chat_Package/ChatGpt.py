@@ -111,6 +111,7 @@ class Chat_GPT:
                         print(R+"👨 USER     ---|  "+W+str(prompt))                                  
                 if prompt == "EXIT".lower() or prompt=="exit".upper():
                     print(R+'\n🚧️ Session is Closed : Exit Terminal'+W)
+                    Connect_Session.close()
                     exit()
                 else:
                     pass      
@@ -181,5 +182,8 @@ class Chat_GPT:
                     print("\n",end='') 
         except KeyboardInterrupt :        
             print(R+'\n🚧️ Session is Closed : Exit Terminal'+W)
+            Connect_Session.close()
+            exit()
+            
 if __name__=='__main__':
     Chat_GPT()             
