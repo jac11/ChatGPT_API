@@ -9,9 +9,12 @@ from zipfile import ZipFile
 import sys
 import re
 import base64
-python = "ls /usr/bin/python*"
-reslut = subprocess.run(python,shell=True,capture_output=True)
-reslut= str(reslut.stdout.decode()).split()[0][-7:].replace("/",'')
+try:
+    python = "ls /usr/bin/python*"
+    reslut = subprocess.run(python,shell=True,capture_output=True)
+    reslut= str(reslut.stdout.decode()).split()[0][-7:].replace("/",'')
+except Exception :
+    reslut = 'python'    
 
 if "--color-off" in sys.argv:
     W,R,B,Y ='','','',''   
@@ -52,14 +55,18 @@ class Web_side :
         os.system(Command) 
     def Chech_Web_IN_Process(self): 
         Process_ID = []
-        web_port = []
+        web_port = []  
         def Check_Browser():
+            all_line = ''
             get_id = "lsof  | grep  python | grep LISTEN >.code "
             subprocess.call(get_id,shell=True,stderr=subprocess.PIPE,stdout=PIPE)
             with open('./.code','r') as output:
-                    lsof = output.read()[-118:].replace(" ",'',1)
+                    lsof = output.readlines()
+                    for line in lsof:
+                        lsof = line[-118:].replace(" ",'',1)
+                        all_line += lsof
             with open(".code",'w') as data : 
-                data.write(lsof)
+                data.write(all_line)
             with open(".code",'r') as readdata:
                     readdata = readdata.read()
             rex_id = str("".join(re.findall('.+-',readdata))).split('-')
