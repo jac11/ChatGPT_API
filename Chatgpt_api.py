@@ -37,11 +37,11 @@ class Control:
     def _Input_Info(self):
         try: 
             run =Banner2_logo()
-            Info = R+"                  "+"""for first time run 
-                To add an API key to ChatGPT, you'll need to create an account on the ChatGPT website.
-                Once you've created an account, you'll be able to generate an API key which you can then add to the ChatGPT tool.
-                To do this, go to the Settings page, click the 'API Keys' tab, and click the 'Generate API Key' button.
-                Copy the generated API key and paste it into the ChatGPT tool."""+W+'\n'\
+                       Info = R+"                    "+"""For first time run 
+                    To add an API key to ChatGPT, you'll need to create an account on the ChatGPT website.
+                    Once you've created an account, you'll be able to generate an API key which you can then add to the ChatGPT tool.
+                    To do this, go to the Settings page, click the 'API Keys' tab, and click the 'Generate API Key' button.
+                    Copy the generated API key and paste it into the ChatGPT tool."""+W+'\n'\
                      +"                                                           "
             Info += Y+"https://www.openai.com"""+W+'\n'+\
             "                                        "                   
