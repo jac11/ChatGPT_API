@@ -10,6 +10,7 @@ import json
 import readline
 import signal
 import threading
+import requests 
 from Chat_Package.Banner import *
 for i in range(readline.get_current_history_length()):
     print (readline.get_history_item(i + 1))
@@ -41,7 +42,35 @@ def Check_argv():
             if command not in Command_Useful:
                 print(printf)
                 exit()                                                                        
-Check_argv()               
+Check_argv()  
+def Test_API():
+    with open('./Chat_Package/.KEY_AI.json','r') as APIKEY:
+        APIKEY = APIKEY.read().split(':')[1][2:-3]
+        Back_end_api= "https://api.openai.com/v1/completions"
+        response = requests.post(
+        Back_end_api,
+        headers={
+                "Content-Type": "application/json",
+                "Authorization": "Bearer "+f"{APIKEY}",
+                },
+        json={
+                "prompt": 'Great Welcome',
+                "model": "text-davinci-003",
+                "max_tokens": 500,
+                "temperature": 0.5
+                },
+        ) 
+    if response.status_code == 200:
+        time.sleep(2)
+        os.system('cls||clear')
+        time.sleep(3)
+    else:
+        run = Banner_Logo()
+        print(R+'⛔ Error API         : '+APIKEY )
+        print("⛔ API repones code  : 429-Too Many Requests")
+        print(R+'🌐️ Visit Link        : '+Y+'https://platform.openai.com/docs/guides/rate-limits?context=tier-free')
+        exit()    
+Test_API()              
 class Chat_GPT:
     def __init__(self):    
         self.__Connect_Openai()
@@ -76,7 +105,7 @@ class Chat_GPT:
                   subprocess.call(package,shell=True,stderr=subprocess.PIPE,stdout=PIPE) 
     def __Connect_Openai(self): 
         try:
-            import requests 
+
             import json
             with open("Chat_Package/.KEY_AI.json") as json_File:
                 json_File = json.load(json_File)
