@@ -44,32 +44,35 @@ def Check_argv():
                 exit()                                                                        
 Check_argv()  
 def Test_API():
-    with open('./Chat_Package/.KEY_AI.json','r') as APIKEY:
-        APIKEY = APIKEY.read().split(':')[1][2:-3]
-        Back_end_api= "https://api.openai.com/v1/completions"
-        response = requests.post(
-        Back_end_api,
-        headers={
-                "Content-Type": "application/json",
-                "Authorization": "Bearer "+f"{APIKEY}",
-                },
-        json={
-                "prompt": 'Great Welcome',
-                "model": "text-davinci-003",
-                "max_tokens": 500,
-                "temperature": 0.5
-                },
-        ) 
-    if response.status_code == 200:
-        time.sleep(2)
-        os.system('cls||clear')
-        time.sleep(3)
-    else:
-        run = Banner_Logo()
-        print(R+'⛔ Error API         : '+APIKEY )
-        print("⛔ API repones code  : 429-Too Many Requests")
-        print(R+'🌐️ Visit Link        : '+Y+'https://platform.openai.com/docs/guides/rate-limits?context=tier-free')
-        exit()    
+    try:
+        with open('./Chat_Package/.KEY_AI.json','r') as APIKEY:
+            APIKEY = APIKEY.read().split(':')[1][2:-3]
+            Back_end_api= "https://api.openai.com/v1/completions"
+            response = requests.post(
+            Back_end_api,
+            headers={
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer "+f"{APIKEY}",
+                    },
+            json={
+                    "prompt": 'Great Welcome',
+                    "model": "text-davinci-003",
+                    "max_tokens": 500,
+                    "temperature": 0.5
+                    },
+            ) 
+        if response.status_code == 200:
+            time.sleep(2)
+            os.system('cls||clear')
+            time.sleep(3)
+        else:
+            run = Banner_Logo()
+            print(R+'⛔ Error API         : '+APIKEY )
+            print("⛔ API repones code  : 429-Too Many Requests")
+            print(R+'🌐️ Visit Link        : '+Y+'https://platform.openai.com/docs/guides/rate-limits?context=tier-free')
+            exit()  
+    except FileNotFoundError:
+          pass         
 Test_API()              
 class Chat_GPT:
     def __init__(self):    
